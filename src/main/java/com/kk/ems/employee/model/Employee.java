@@ -5,7 +5,6 @@ import com.kk.ems.department.model.Department;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -27,5 +26,5 @@ public class Employee {
     private Date dateOfBirth;
 
     @Column(precision = 10, scale = 2)
-    private BigDecimal salary;
+    private Long salary;
 }

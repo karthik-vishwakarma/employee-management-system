@@ -2,14 +2,14 @@ package com.kk.ems.department.rest;
 
 import com.kk.ems.department.model.Department;
 import com.kk.ems.department.service.DepartmentService;
+import com.kk.ems.department.wrapper.DepartmentWrapper;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
 
 @Slf4j
 @Path("/department")
@@ -27,6 +27,13 @@ public class DepartmentRestImpl {
     @POST
     public Response create(Department department) {
         log.info("Department :: {}", department);
-        return departmentService.create(department);
+        departmentService.create(department);
+        return Response.ok(department).build();
+    }
+
+    @GET
+    public Response getAllDepartments() {
+        List<DepartmentWrapper> departmentWrapperList = departmentService.getAllDepartments();
+        return Response.ok(departmentWrapperList).build();
     }
 }
