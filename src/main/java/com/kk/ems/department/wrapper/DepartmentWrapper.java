@@ -1,6 +1,6 @@
 package com.kk.ems.department.wrapper;
 
-import com.kk.ems.employee.EmployeeWrapper;
+import com.kk.ems.employee.wrapper.EmployeeWrapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
