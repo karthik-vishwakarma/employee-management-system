@@ -1,5 +1,6 @@
 package com.kk.ems.employee.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.kk.ems.department.model.Department;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class Employee {
     private String employeeId;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "departmentId")
     private Department department;
 

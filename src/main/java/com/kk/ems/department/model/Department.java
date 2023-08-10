@@ -1,11 +1,10 @@
 package com.kk.ems.department.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kk.ems.employee.model.Employee;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,11 +20,7 @@ public class Department {
     @Column(name = "name", nullable = false, length = 255)
     private String name;
 
-    @Column(precision = 10, scale = 2)
-    private BigDecimal totalSalary;
-
-    private int noOfEmployees;
-
+    @JsonManagedReference
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Employee> employees;
 }
