@@ -26,13 +26,13 @@ public class DepartmentRestImpl {
 
     @POST
     public Response create(Department department) {
-        log.info("Department :: {}", department);
-        departmentService.create(department);
-        return Response.ok(department).build();
+        log.trace("Going to create department having details : {}", department);
+        return Response.ok(departmentService.create(department)).build();
     }
 
     @GET
     public Response getAllDepartments() {
+        log.trace("Going to get all department");
         List<DepartmentWrapper> departmentWrapperList = departmentService.getAllDepartments();
         return Response.ok(departmentWrapperList).build();
     }

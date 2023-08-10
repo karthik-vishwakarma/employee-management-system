@@ -10,13 +10,14 @@ import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.LongSummaryStatistics;
 import java.util.stream.Collectors;
 
+@Slf4j
 @ApplicationScoped
 public class DepartmentServiceImpl implements DepartmentService {
 
@@ -30,12 +31,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     @Transactional
     public Department create(Department department) {
+        log.info("Going to create department having details : {}", department);
         departmentDao.persistAndFlush(department);
         return department;
     }
 
     @Override
     public List<DepartmentWrapper> getAllDepartments() {
+        log.info("Going to get all department");
         PanacheQuery<Department> departmentList = departmentDao.findAll();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
         return departmentList.stream().map(dep -> {
